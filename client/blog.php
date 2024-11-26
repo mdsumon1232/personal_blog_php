@@ -40,6 +40,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_comment'])) {
         $comment_response = "All fields are required.";
     }
 }
+
+
+
+
 ?>
 
 
