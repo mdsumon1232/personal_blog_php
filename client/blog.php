@@ -1,6 +1,8 @@
 <?php
 include("./connection/connection.php");
 
+$all_same_category_data = [];
+
 if (isset($_GET['id'])) {
     $post_id = $_GET['id'];
 
@@ -16,7 +18,22 @@ if (isset($_GET['id'])) {
     $commentsData->bind_param('i', $post_id);
     $commentsData->execute();
     $comments_result = $commentsData->get_result();
+
+    // ------------------------------ left side ---------------
+
+    $category_id = $article_data['category'];
+     
+    $similar_article = $conn -> prepare("SELECT * FROM article WHERE category = ?");
+    $similar_article->bind_param("i", $category_id);
+    $similar_article->execute();
+    $this_category_article = $similar_article->get_result();
+    
+    while($same_category = $this_category_article -> fetch_assoc()){
+        $all_same_category_data[] = $same_category;
+    }
+
 }
+
 
 $comment_response = "";
 
@@ -40,6 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_comment'])) {
         $comment_response = "All fields are required.";
     }
 }
+
 
 
 
@@ -117,15 +135,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_comment'])) {
             <!-- Similar Posts -->
             <div class="similar-posts">
                 <h3>Similar Posts</h3>
-                <div class="post-item">
-                    <img src="https://via.placeholder.com/100x100" alt="Post Image" class="post-thumbnail">
+                <?php 
+                     
+                     foreach($all_same_category_data as $all_article){
+                        echo '
+                          <div class="post-item">
+                    <img src="http://localhost/personalBlog/admin/'.$all_article['article_img'].'" alt="Post Image" class="post-thumbnail">
                     <div class="post-details">
-                        <h4>Exploring CSS Grid Layout</h4>
-                        <p class="post-date">Published: Nov 18, 2024</p>
-                        <p class="post-description">Learn how to create powerful layouts using CSS grid in this
-                            tutorial...</p>
+                        <h4>'.$all_article['title'].'</h4>
+                        <p class="post-description">'.$all_article['metaData'].'</p>
                     </div>
                 </div>
+                        ';
+                     }
+
+                ?>
             </div>
         </aside>
     </main>
