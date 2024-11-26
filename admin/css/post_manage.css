@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.post_container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.post_container h2 {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.post {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  background-color: #eee;
+  padding: 0 20px;
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+.title {
+  flex-basis: 20%;
+  text-align: center;
+}
+
+.article-container {
+  flex: 1;
+  text-align: center;
+}
+
+.post img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.action {
+  width: 200px;
+}
+.action img {
+  width: 25px;
+  margin-right: 20px;
+}
