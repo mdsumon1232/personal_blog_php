@@ -2,6 +2,7 @@
 include("./connection/connection.php");
 
 $all_same_category_data = [];
+$all_comments = [];
 
 if (isset($_GET['id'])) {
     $post_id = $_GET['id'];
@@ -14,10 +15,14 @@ if (isset($_GET['id'])) {
     $article_data = $article_result->fetch_assoc();
 
     // Fetch comments
-    $commentsData = $conn->prepare("SELECT * FROM comment WHERE post_id = ?");
+    $commentsData = $conn->prepare("SELECT * FROM comment WHERE post_id = ? AND status = 1");
     $commentsData->bind_param('i', $post_id);
     $commentsData->execute();
     $comments_result = $commentsData->get_result();
+    
+    while($comment_content = $comments_result ->fetch_assoc()){
+        $all_comments[] = $comment_content;
+    }
 
     // ------------------------------ left side ---------------
 
@@ -61,7 +66,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_comment'])) {
 
 
 
-
 ?>
 
 
@@ -85,23 +89,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_comment'])) {
         <div class="blog-content">
             <h1 class="blog-title"><?php echo $article_data['title'] ?> </h1>
             <p class="blog-date">Published: November 20, 2024, 10:30 AM</p>
-            <img src='<?php echo "http://localhost/personalBlog/admin/{$article_data['article_img']}"; ?>'>
+            <div class="feature-img">
+                <img src='<?php echo "http://localhost/personalBlog/admin/{$article_data['article_img']}"; ?>'>
+            </div>
             <article class="blog-article">
                 <?php echo $article_data['article'] ?>
             </article>
 
             <!-- Comment Form -->
             <div class="comments">
-                <h2>Leave a Comment</h2>
+
                 <form id="commentForm" action="blog.php?id=<?php echo $post_id; ?>" method="POST">
-                    <input type="text" name="name" id="name" placeholder="Your Name" required>
-                    <input type="email" name="email" id="email" placeholder="Your Email" required>
-                    <textarea id="message" name="message" placeholder="Write your comment..." rows="3"
-                        required></textarea>
-                    <div>
-                        <p><?php echo $comment_response; ?></p>
-                    </div>
-                    <button type="submit" class="comment-btn" name="submit_comment">Post Comment</button>
+                    <fieldset>
+                        <legend>
+                            <h2>Leave a Comment</h2>
+                        </legend>
+                        <input type="text" name="name" id="name" placeholder="Your Name" required>
+                        <input type="email" name="email" id="email" placeholder="Your Email" required>
+                        <textarea id="message" name="message" placeholder="Write your comment..." rows="3"
+                            required></textarea>
+                        <div>
+                            <p><?php echo $comment_response; ?></p>
+                        </div>
+                        <button type="submit" class="comment-btn" name="submit_comment">Post Comment</button>
+                    </fieldset>
                 </form>
             </div>
 
@@ -112,7 +123,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_comment'])) {
                 <div id="commentList">
                     <?php 
                      
-                     
+                     foreach ($all_comments as $comment){
+                        echo "
+                        <div>
+                        <h4>{$comment['reader_name']}</h4>
+                        <p> {$comment['comment']} </p>
+                        </div>
+                    ";
+                     }
                     
                     ?>
                 </div>
@@ -125,10 +143,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_comment'])) {
             <div class="social-share">
                 <h3>Share this post</h3>
                 <div class="social-icons">
-                    <a href="#" class="social-icon">Facebook</a>
-                    <a href="#" class="social-icon">Twitter</a>
-                    <a href="#" class="social-icon">LinkedIn</a>
-                    <a href="#" class="social-icon">WhatsApp</a>
+                    <a href="#" class="share-icon">
+                        <img src="http://localhost/personalBlog/admin/images/facebook.png" alt="">
+                    </a>
+                    <a href="#" class="share-icon">
+                        <img src="http://localhost/personalBlog/admin/images/x.png" alt="">
+                    </a>
+                    <a href="#" class="share-icon">
+                        <img src="http://localhost/personalBlog/admin/images/instagram1.png" alt="">
+                    </a>
+                    <a href="#" class="share-icon">
+                        <img src="http://localhost/personalBlog/admin/images/what's%20app.png" alt="">
+                    </a>
                 </div>
             </div>
 
@@ -139,13 +165,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_comment'])) {
                      
                      foreach($all_same_category_data as $all_article){
                         echo '
+                        <a href="./blog.php?id='.$all_article['article_id'].'">
                           <div class="post-item">
-                    <img src="http://localhost/personalBlog/admin/'.$all_article['article_img'].'" alt="Post Image" class="post-thumbnail">
+                  <div class="similar_post_img">
+                          <img src="http://localhost/personalBlog/admin/'.$all_article['article_img'].'" alt="Post Image" class="post-thumbnail">
+                  </div>
+
                     <div class="post-details">
                         <h4>'.$all_article['title'].'</h4>
                         <p class="post-description">'.$all_article['metaData'].'</p>
                     </div>
                 </div>
+                </a>
                         ';
                      }
 

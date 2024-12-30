@@ -31,19 +31,13 @@
        $feature_img_tmp_name = $_FILES['featuredImage']['tmp_name'];
 
        $feature_img_folder = 'images/'.$feature_img_name;
+       echo mb_strlen($metaData);
 
-            if(strlen($metaData) > 100){
-                echo "meta data maximum 100 character";
-            }
-            else{
-                if(strlen($article) > 10000){
-                    echo "article length must be less then 1000 character";
-                  }
-                  else{
+            if(mb_strlen($metaData) <= 100){
+             
                    if(move_uploaded_file($feature_img_tmp_name , $feature_img_folder )){
                      $insert_article = $conn -> prepare("INSERT INTO article (title,article,category,article_img,metaData) values(?,?,?,?,?)");
                      $insert_article -> bind_param('ssiss' , $title,$article,$category,$feature_img_folder,$metaData);
-                     $insert_article -> execute();
            
                      if($insert_article -> execute()){
                         echo "data insert successfully";
@@ -56,7 +50,10 @@
                    else{
                      echo "image not uploaded";
                    }
-                  }
+                  
+            }
+            else{
+                echo "meta data maximum 100 character";
             }
 
       }
@@ -118,7 +115,12 @@
                 <!-- --------meta data------ -->
 
                 <label for="metaData">Meta Data</label>
-                <textarea name="metaData" id="metaData" rows="10"></textarea>
+                <textarea name="metaData" id="metaData" rows="10" oninput="metadataChange(this.value)"></textarea>
+
+                <!-- display meta count -->
+                <div>
+                    <p id="metaCount"></p>
+                </div>
 
                 <!-- Publish Settings -->
                 <div class="publish-settings">
@@ -142,6 +144,21 @@
         toolbar: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | code",
         menubar: false,
     });
+
+
+    const metaData = document.getElementById('metaData');
+
+    const metadataChange = (value) => {
+
+        const metaCount = document.getElementById('metaCount');
+        const numberOfMetaCharacter = value.length;
+        metaCount.innerText = numberOfMetaCharacter;
+        if (numberOfMetaCharacter > 100) {
+            metaCount.classList.add('red');
+        } else {
+            metaCount.classList.add('green');
+        }
+    }
     </script>
 
 </body>

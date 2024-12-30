@@ -23,12 +23,7 @@
   
    foreach($categories as $category){
       echo '
-            <div class="category-card">
-                <img src="http://localhost/personalBlog/admin/' . $category['category_img'] . '" alt="Category 1">
-                <h3>'. $category['category_name'] .'</h3>
-                <p>'. $category['category_details'] .'</p>
-            </div>
-      
+                <li> <a href="./client/category_blog.php?id='.$category['category_id'].'">'. $category['category_name'] .' </a></li>
       ';
    }
 

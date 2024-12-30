@@ -1,0 +1,139 @@
+body {
+  font-family: "Raleway", sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  background-color: #f9f9f9;
+}
+
+.about-heading {
+  width: 100%;
+  height: 600px;
+  background-image: url("../../admin/images/about-banner.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.about-heading-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.about-description {
+  width: 30%;
+}
+
+.about-description h2 {
+  font-size: 30px;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+}
+
+.about-description p {
+  font-size: 16px;
+  font-weight: 400;
+  color: #fff;
+  text-align: center;
+}
+
+/* -----------our-story-section------------ */
+
+.our-story-section {
+  display: flex;
+  align-items: center;
+}
+
+.about-text {
+  flex-basis: 50%;
+  padding: 0 30px;
+}
+
+.about-img {
+  flex-basis: 50%;
+}
+
+.about-container {
+  width: 77%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+header {
+  background: #333;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+}
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+section {
+  background: #fff;
+  margin: 20px 0;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+section h2 {
+  color: #333;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+section p {
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+.team {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+.team-member {
+  background: #f1f1f1;
+  border-radius: 8px;
+  text-align: center;
+  padding: 15px;
+  flex: 1 1 calc(33.333% - 20px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.team-member img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+.team-member h3 {
+  margin: 10px 0 5px;
+  font-size: 1.2rem;
+}
+.team-member p {
+  font-size: 0.9rem;
+  color: #777;
+}
+@media (max-width: 768px) {
+  .team-member {
+    flex: 1 1 calc(50% - 20px);
+  }
+}
+@media (max-width: 480px) {
+  .team-member {
+    flex: 1 1 100%;
+  }
+}
+footer {
+  text-align: center;
+  padding: 10px 0;
+  background: #333;
+  color: #fff;
+  margin-top: 20px;
+}

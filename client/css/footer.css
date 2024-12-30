@@ -1,8 +1,10 @@
 /* Footer Styling */
+
 .footer {
   background-color: #222;
   color: #fff;
   padding: 40px 20px;
+  font-family: "Raleway", sans-serif;
 }
 
 .footer-container {
@@ -53,18 +55,11 @@
 
 .social-icon {
   display: inline-block;
-  padding: 8px 15px;
-  background-color: #444;
+  width: 30px;
   border-radius: 5px;
-  text-decoration: none;
   color: #ccc;
   font-size: 0.9rem;
   transition: background-color 0.3s;
-}
-
-.social-icon:hover {
-  background-color: #555;
-  color: #fff;
 }
 
 /* Footer Bottom */

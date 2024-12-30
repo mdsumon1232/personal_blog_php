@@ -6,7 +6,7 @@
     
     $delete_post = $conn -> prepare("DELETE FROM article WHERE article_id = $post_id LIMIT 1");
     if($delete_post -> execute()){
-        header("Location: http://localhost/adminPanel/post_manage.php");
+        header("Location: http://localhost/personalBlog/admin/post_manage.php");
     }
     else{
         echo "try again";

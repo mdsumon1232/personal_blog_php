@@ -7,7 +7,7 @@
         <li><a href="category.php">Category</a></li>
         <li><a href="create_post.php">Create Post</a></li>
         <li><a href="#">Media Library</a></li>
-        <li><a href="#">Comments</a></li>
+        <li><a href="comment.php">Comments</a></li>
         <li><a href="#">Analytics</a></li>
         <li><a href="#">User Profile</a></li>
         <li><a href="#">Settings</a></li>

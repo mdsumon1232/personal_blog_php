@@ -30,10 +30,18 @@
         <div class="footer-column">
             <h3>Follow Us</h3>
             <div class="social-icons">
-                <a href="#" class="social-icon">Facebook</a>
-                <a href="#" class="social-icon">Twitter</a>
-                <a href="#" class="social-icon">Instagram</a>
-                <a href="#" class="social-icon">LinkedIn</a>
+                <a href="https://www.facebook.com/poet.lover.4455" target="blank" class="social-icon">
+                    <img src="http://localhost/personalBlog/admin/images/facebook.png" alt="">
+                </a>
+                <a href="https://x.com/MdSumon48276376" target="blank" class="social-icon">
+                    <img src="http://localhost/personalBlog/admin/images/x.png" alt="">
+                </a>
+                <a href="https://www.instagram.com/ahamed.md.sumon/" target="blank" class="social-icon">
+                    <img src="http://localhost/personalBlog/admin/images/instagram1.png" alt="">
+                </a>
+                <a href="https://wa.me/01747533104" target="_blank" class="social-icon">
+                    <img src="http://localhost/personalBlog/admin/images/what's%20app.png" alt="">
+                </a>
             </div>
         </div>
     </div>

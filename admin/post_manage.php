@@ -50,7 +50,7 @@
       <div class='post'>
       <img src='{$value['article_img']}' alt=''>
           <p class='title'>{$value['title']}</p>
-          <div class='article-container'>{$value['article']}</div>
+          <p class='article-container'>{$value['metaData']}</p>
           
           <div class='action'>
               <a href='./script/post_delete.php?id={$value['article_id']}'>

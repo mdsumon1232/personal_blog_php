@@ -14,13 +14,17 @@ h4,
 p {
   margin: 0 0 10px;
 }
+img {
+  width: 100%;
+}
 
 /* Blog Container */
 .blog-container {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 20px;
-  max-width: 1200px;
+  max-width: 1600px;
+  width: 80%;
   margin: 20px auto;
   padding: 0 15px;
 }
@@ -37,6 +41,14 @@ p {
   font-size: 2rem;
   margin-bottom: 10px;
   color: #333;
+}
+
+.feature-img {
+  width: 100%;
+  margin: 0 auto 10px;
+}
+.feature-img img {
+  border-radius: 5px;
 }
 
 .blog-date {
@@ -107,18 +119,8 @@ textarea {
   flex-wrap: wrap;
 }
 
-.social-icon {
-  display: inline-block;
-  padding: 8px 15px;
-  background-color: #444;
-  border-radius: 5px;
-  text-decoration: none;
-  color: #fff;
-  font-size: 0.9rem;
-}
-
-.social-icon:hover {
-  background-color: #007bff;
+.share-icon {
+  width: 30px;
 }
 
 .similar-posts {
@@ -174,7 +176,7 @@ textarea {
 
 .comments form input,
 .comments form textarea {
-  width: 100%;
+  width: 98%;
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #ddd;

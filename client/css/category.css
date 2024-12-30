@@ -1,24 +1,9 @@
 /* Base Reset */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
-}
-
-h2 {
-  margin: 0;
-}
-
-p {
-  margin: 0;
-}
 
 /* Category Section */
 .category-section {
   padding: 20px;
   text-align: center;
-  background-color: #fff;
 }
 
 .section-title {
@@ -29,6 +14,8 @@ p {
 
 /* Category Container */
 .category-container {
+  width: 80%;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
@@ -36,15 +23,6 @@ p {
 }
 
 /* Category Card */
-.category-card {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
-  text-align: center;
-}
 
 .category-card img {
   width: 100%;

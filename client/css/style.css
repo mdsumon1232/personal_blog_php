@@ -1,24 +1,91 @@
 /* Base Reset */
-body,
+body {
+  background-color: #9999 !important;
+}
+
 ul,
-li {
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+div,
+span,
+p,
+a,
+article {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-body {
-  font-family: Arial, sans-serif;
+img {
+  width: 100%;
 }
 
 /* Header Styles */
 .header {
+  position: sticky;
+  top: 0;
   background-color: #333;
   color: #fff;
   padding: 10px 20px;
 }
 
+/* --------------search bar------------- */
+
+.search-bar {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.search-bar form {
+  width: 60%;
+  margin: 0 auto;
+  border: 1px solid #fff;
+  position: relative;
+  border-radius: 5px;
+}
+
+.search-bar form input[type="text"] {
+  width: 84%;
+  padding: 7px;
+  background-color: transparent;
+  border: 0 solid;
+  outline: none;
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: #fff;
+}
+
+.search-bar form input[type="submit"] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20%;
+  padding: 5px;
+  background-color: #fff;
+  color: #000;
+  font-size: 20px;
+  font-weight: 500;
+  border: 0 solid;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+/* --------------hero----------- */
+
+.hero-area {
+  max-width: 1920px;
+  width: 100%;
+  margin: 0 auto;
+}
+
 .container {
+  width: 80%;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -41,13 +108,27 @@ body {
 .menu li a {
   color: #fff;
   text-decoration: none;
+}
+.menu li {
   padding: 5px 10px;
   transition: background-color 0.3s;
 }
 
-.menu li a:hover {
+.menu li:hover {
   background-color: #555;
   border-radius: 5px;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  padding: 20px;
+  top: 77%;
+  background-color: #333;
+}
+
+.menu li:hover .submenu {
+  display: block;
 }
 
 /* Toggle Button for Mobile */
@@ -62,6 +143,98 @@ body {
 
 .toggle-button i {
   font-size: 1.5rem;
+}
+
+/* ------------------------- main container----------------------- */
+
+.main-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  column-gap: 20px;
+}
+
+.left {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 1px 5px #000;
+}
+
+/* -----------------category section------------- */
+
+.category-list {
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 1px 5px #000;
+}
+
+.category-list h3 {
+  font-size: 25px;
+}
+
+.category-list li {
+  margin-bottom: 10px;
+}
+
+.category-list li a {
+  font-size: 18px;
+  text-decoration: none;
+  color: #000;
+}
+
+/* ---------------about section --------- */
+
+.about-section {
+  background-color: #fff;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 1px 5px #000;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+}
+.author img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.author-name {
+  margin-left: 10px;
+}
+
+.author-name h4 {
+  font-size: 20px;
+  padding-bottom: 5px;
+}
+.author-name p {
+  font-size: 16px;
+}
+
+.about-content {
+  margin-top: 20px;
+  font-size: 16px;
+  line-height: 25px;
+}
+
+.social-group {
+  display: flex;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.social-group a img {
+  width: 30px;
+  height: 30px;
+  margin: 0 10px;
 }
 
 /* Responsive Styles */
