@@ -1,6 +1,17 @@
 <?php
             require("./client/connection/connection.php");
 
+            $popular_post = $conn -> prepare("SELECT * FROM article");
+            $popular_post -> execute();
+
+            $popular_result = $popular_post -> get_result();
+
+            $trending_posts = [];
+
+            while($popular_post_data = $popular_result -> fetch_assoc()){
+                $trending_posts[] = $popular_post_data;
+            }
+
 ?>
 
 <!DOCTYPE html>
@@ -36,9 +47,47 @@
 
 
     <section class="main-container">
-        <div class="left">
-            <?php require("./client/postCard.php"); ?>
-        </div>
+
+        <?php 
+            
+            require("./client/postCard.php"); 
+
+            if($article_result -> num_rows > 0){
+                echo "<div class='left'>";
+                while($article = $article_result -> fetch_assoc()){
+        
+                    $publish_date = new DateTime($article['create_at']);
+                    $formated_date = $publish_date -> format('d F Y');
+                
+                    echo '
+                    
+                          <div class="post-card">
+                        <img src="http://localhost/personalBlog/admin/'.$article['article_img'].'" alt="Post Image" class="post-image">
+                        <div class="post-content">
+                            <h3 class="post-title">'.$article['title'].'</h3>
+                            <p class="post-time">Published: ' . $formated_date .'</p>
+                            <p class="post-details">'.$article['metaData'].'</p>
+                            <a class="read-more" href="./client/blog.php?id='.$article['article_id'].'">Read More</a>
+                        </div>
+                    </div>
+                    ';
+        
+        }
+        echo "</div>";
+        
+        
+                }
+                else {
+                    echo "
+                        <div class='no-posts'>
+                            <h4>POST NOT FOUND</h4>
+                        </div>
+                    ";
+                }
+            
+            
+            ?>
+
         <div class="right">
 
             <div class="category-list">
@@ -66,6 +115,40 @@
                     <a href=""><img src="./admin/images/what's app.png" alt=""></a>
                     <a href=""><img src="./admin/images/x.png" alt=""></a>
                 </div>
+            </div>
+
+            <!-- ---------------------popular post-------------------- -->
+
+            <div class="popular_container">
+                <h3>Popular Posts</h3>
+                <?php 
+                        
+                        $all_trending_post =array_slice($trending_posts ,0, 3);
+
+                        foreach($all_trending_post as $trending_post){
+                            $metaData = substr($trending_post['metaData'], 1 , 60);
+                            echo "
+                            
+                            <div class='popular-item'> 
+                            
+                             <img src='http://localhost/personalBlog/admin/$trending_post[article_img]'>
+                             
+
+                             <div class='overlay'> 
+                            <div>
+                                 <p> $metaData </p> 
+                             <a href='./client/blog.php?id=$trending_post[article_id]' class='popular-read'> READ </a>
+                            </div>
+                             </div>
+
+                             
+
+                            </div>
+                            
+                            ";
+                        }
+
+                ?>
             </div>
 
         </div>

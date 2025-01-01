@@ -1,23 +1,21 @@
 <?php
 
-        $category_data = $conn->prepare("SELECT * FROM category");
+if($conn){
+    
+    $category_data = $conn->prepare("SELECT * FROM category");
 
-        $category_data -> execute();
+    $category_data -> execute();
 
-        $category_result = $category_data -> get_result();
+    $category_result = $category_data -> get_result();
 
-        $categories = [];
+    $categories = [];
 
-        if($category_result -> num_rows > 0){
-          while($all_category = $category_result -> fetch_assoc()){
-            $categories[] = $all_category;
-          }
-        }
-        
-       
-
-
-
+    if($category_result -> num_rows > 0){
+      while($all_category = $category_result -> fetch_assoc()){
+        $categories[] = $all_category;
+      }
+    }
+}
 
 ?>
 
@@ -40,17 +38,17 @@
                 <li><a href="http://localhost/personalBlog/client/category.php">Categories <span> <i
                                 class="fa-solid fa-angle-down"></i> </span>
                     </a>
-                    <div class="submenu">
-                        <ul>
-                            <?php
+                    <div class=" <?php echo count($categories) > 0 ? 'submenu' : 'hidden'; ?>"></div>
+                    <ul>
+                        <?php
                         
-                        foreach($categories as $category){
-                            echo "<li> <a> $category[category_name]</a> </li>";
+                        foreach ($categories as $category) {
+                            echo "<li><a href='http://localhost/personalBlog/client/category_blog.php?id={$category['category_id']}'> {$category['category_name']}</a></li>";
                         }
                         
                         ?>
-                        </ul>
-                    </div>
+                    </ul>
+                    </>
 
                 </li>
                 <li><a href="http://localhost/personalBlog/client/contact.php">Contact</a></li>

@@ -14,6 +14,13 @@ if (isset($_GET['id'])) {
     $article_result = $postData->get_result();
     $article_data = $article_result->fetch_assoc();
 
+    $publish_time = $article_data['create_at'];
+
+    $date_time  = new DateTime($publish_time);
+
+    $formate_date = $date_time -> format("d F Y");
+
+
     // Fetch comments
     $commentsData = $conn->prepare("SELECT * FROM comment WHERE post_id = ? AND status = 1");
     $commentsData->bind_param('i', $post_id);
@@ -84,11 +91,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_comment'])) {
 
     <?php  require('./share/header.php')  ?>
 
+
     <main class="blog-container">
         <!-- First Column: Blog Post Content -->
         <div class="blog-content">
             <h1 class="blog-title"><?php echo $article_data['title'] ?> </h1>
-            <p class="blog-date">Published: November 20, 2024, 10:30 AM</p>
+            <p class="blog-date">Publish: <?php echo $formate_date ?></p>
             <div class="feature-img">
                 <img src='<?php echo "http://localhost/personalBlog/admin/{$article_data['article_img']}"; ?>'>
             </div>
@@ -164,8 +172,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_comment'])) {
                 <?php 
                      
                      foreach($all_same_category_data as $all_article){
+
+                        $date_and_time = new DateTime($all_article['create_at']);
+
+                        $_publish_date = $date_and_time -> format("d F Y");
+
                         echo '
-                        <a href="./blog.php?id='.$all_article['article_id'].'">
+                       <a href="./blog.php?id='.$all_article['article_id'].'">
                           <div class="post-item">
                   <div class="similar_post_img">
                           <img src="http://localhost/personalBlog/admin/'.$all_article['article_img'].'" alt="Post Image" class="post-thumbnail">
@@ -173,7 +186,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_comment'])) {
 
                     <div class="post-details">
                         <h4>'.$all_article['title'].'</h4>
-                        <p class="post-description">'.$all_article['metaData'].'</p>
+                        <p> Publish:'. $_publish_date .'</p>
+                        
                     </div>
                 </div>
                 </a>

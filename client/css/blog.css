@@ -21,9 +21,9 @@ img {
 /* Blog Container */
 .blog-container {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 3fr 1fr;
   gap: 20px;
-  max-width: 1600px;
+  max-width: 1400px;
   width: 80%;
   margin: 20px auto;
   padding: 0 15px;
@@ -103,8 +103,12 @@ textarea {
 .sidebar {
   background-color: #fff;
   padding: 20px;
+  height: calc(100vh - 170px);
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 78px;
+  z-index: -1;
 }
 
 .social-share h3,
@@ -140,9 +144,14 @@ textarea {
 }
 
 .post-details h4 {
-  font-size: 1rem;
+  font-size: 16px;
   color: #333;
   margin-bottom: 5px;
+}
+
+.post-details p {
+  font-size: 14px;
+  color: #000;
 }
 
 .post-date {
