@@ -1,6 +1,6 @@
 <?php
-
-if($conn){
+      
+ 
     
     $category_data = $conn->prepare("SELECT * FROM category");
 
@@ -15,7 +15,8 @@ if($conn){
         $categories[] = $all_category;
       }
     }
-}
+
+
 
 ?>
 
@@ -24,7 +25,7 @@ if($conn){
 <header class="header">
     <div class="container">
         <div class="logo">My Blog</div>
-        <div class="search-bar">
+        <div class="search-bar" id="search-bar">
             <form action="">
                 <input type="text" placeholder="search">
                 <input type="submit" value="search">
@@ -34,26 +35,26 @@ if($conn){
             <ul class="menu">
                 <li><a href="http://localhost/personalBlog/">Home</a></li>
                 <li><a href="http://localhost/personalBlog/client/about.php">About</a></li>
-                <li><a href="http://localhost/personalBlog/client/allblog.php?page=1">Blog</a></li>
-                <li><a href="http://localhost/personalBlog/client/category.php">Categories <span> <i
-                                class="fa-solid fa-angle-down"></i> </span>
-                    </a>
-                    <div class=" <?php echo count($categories) > 0 ? 'submenu' : 'hidden'; ?>"></div>
-                    <ul>
-                        <?php
-                        
-                        foreach ($categories as $category) {
-                            echo "<li><a href='http://localhost/personalBlog/client/category_blog.php?id={$category['category_id']}'> {$category['category_name']}</a></li>";
-                        }
-                        
-                        ?>
-                    </ul>
-                    </>
+                <li><a href="#">category</a>
+                    <div class=" <?php echo count($categories) > 0 ? 'submenu' : 'hidden'; ?>">
+                        <ul>
+                            <?php 
+                            
+                              foreach($categories as $category){
+                                echo "<li><a href=''> {$category['category_name']} </a></li>";
+                              }
+                            
+                            ?>
+                        </ul>
+                    </div>
 
                 </li>
                 <li><a href="http://localhost/personalBlog/client/contact.php">Contact</a></li>
             </ul>
         </nav>
+        <button class="toggle-button" id="search-toggle">
+            <i class="fa-solid fa-magnifying-glass" id="magnifying"></i>
+        </button>
         <button class="toggle-button" id="toggle-button">
             <i class="fas fa-bars"></i>
         </button>

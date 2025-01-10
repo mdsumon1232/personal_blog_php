@@ -8,13 +8,16 @@
     $category_data -> execute();
     
     $all_data = $category_data -> get_result();
+
+    $message = "";
+
     if($all_data -> num_rows > 0){
       while($row = $all_data -> fetch_assoc()){
         $categories[] = $row;
       }
     }
     else{
-        echo "no category are available";
+        $message = "No category available";
     }
 
 ?>
@@ -61,6 +64,8 @@
                     
                     ";
                 }
+ 
+                echo "<p> $message </p> ";
 
  ?>
         </section>

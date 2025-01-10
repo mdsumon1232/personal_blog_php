@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/about.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -92,6 +93,10 @@
 
 
     <?php require('./share/footer.php'); ?>
+
+    <!-- -------------------javascript link---------------- -->
+
+    <script src="./script/script.js"></script>
 
 </body>
 

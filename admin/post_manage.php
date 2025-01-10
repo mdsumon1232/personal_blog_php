@@ -7,6 +7,9 @@
 
      $result = $post_data -> get_result();
      $articles = [];
+
+     $message = "";
+
      if($result -> num_rows > 0){
          
           while($article_data = $result -> fetch_assoc()){
@@ -14,7 +17,7 @@
           }
      }
      else{
-      echo "data not found";
+      $message = "NO post available";
      }
  
 
@@ -63,6 +66,8 @@
       </div>
   ";
        }
+
+       echo" <p> $message </p>";
 
 ?>
 

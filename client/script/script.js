@@ -17,3 +17,22 @@ toggleButton.addEventListener("click", () => {
     icon.classList.add("fa-bars");
   }
 });
+
+// ------------------- search box ----------
+
+const searchToggle  = document.getElementById("search-toggle");
+const searchBox = document.getElementById('search-bar');
+const magnifying = document.getElementById('magnifying');
+
+searchToggle.addEventListener('click' , ()=>{
+   searchBox.classList.toggle('toggle-display');
+
+   if(searchBox.classList.contains('toggle-display')){
+    magnifying.classList.remove('fa-magnifying-glass');
+    magnifying.classList.add("fa-xmark")
+   }
+   else{
+    magnifying.classList.add('fa-magnifying-glass');
+    magnifying.classList.remove("fa-xmark")
+   }
+})

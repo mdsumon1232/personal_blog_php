@@ -1,5 +1,3 @@
-/* Footer Styling */
-
 .footer {
   background-color: #222;
   color: #fff;
@@ -53,13 +51,9 @@
   gap: 10px;
 }
 
-.social-icon {
-  display: inline-block;
+a.social-icon img {
   width: 30px;
-  border-radius: 5px;
-  color: #ccc;
-  font-size: 0.9rem;
-  transition: background-color 0.3s;
+  height: 30px;
 }
 
 /* Footer Bottom */

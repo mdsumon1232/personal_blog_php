@@ -1,5 +1,6 @@
 <?php
             require("./client/connection/connection.php");
+            require("./client/postCard.php"); 
 
             $popular_post = $conn -> prepare("SELECT * FROM article");
             $popular_post -> execute();
@@ -14,6 +15,11 @@
 
 ?>
 
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,36 +27,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>personal blog</title>
-
-
-
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./client/css/style.css">
-    <link rel="stylesheet" href="./client/css/category.css">
-    <link rel="stylesheet" href="./client/css/latest.css">
     <link rel="stylesheet" href="./client/css/footer.css">
-
-    <!-- -------------google fonts----------- -->
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
-
+    <link rel="stylesheet" href="./client/css/style.css">
+    <link rel="stylesheet" href="client/css/latest.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
+    <?php require('./client/share/header.php') ?>
 
-    <?php require('./client/share/header.php');  ?>
-
-
+    <!-- ---------------------------------- main content start ---------------------------------- -->
 
 
     <section class="main-container">
 
         <?php 
             
-            require("./client/postCard.php"); 
+            
 
             if($article_result -> num_rows > 0){
                 echo "<div class='left'>";
@@ -119,7 +112,7 @@
 
             <!-- ---------------------popular post-------------------- -->
 
-            <div class="popular_container">
+            <div class="<?php echo $article_result -> num_rows > 0   ? 'popular_container' : 'hidden' ?>">
                 <h3>Popular Posts</h3>
                 <?php 
                         
@@ -154,11 +147,16 @@
         </div>
     </section>
 
-    <!-- Footer Section -->
+
+    <!-- --------------------------------------main content end---------------------------------- -->
 
     <?php require('./client/share/footer.php') ?>
 
-
+    <!--javascript code-->
 
     <script src="./client/script/script.js"></script>
+
+
 </body>
+
+</html>

@@ -13,19 +13,19 @@
         while ($category = $result->fetch_assoc()) {
             $categories[] = $category;
         }
-    } else {
-        echo "Data not found";
-    }
+    } 
 
 
     #-------------------- INSERT ARTICLE DATA---------------------
-
+    $tag_message = "";
+    
      if(isset($_POST['post'])){
 
        $title = $_POST['postTitle'];
        $category = $_POST['postCategory'];
        $article = $_POST['postContent'];
        $metaData = $_POST['metaData'];
+    
         
        $feature_img_name = $_FILES['featuredImage']['name'];
        $feature_img_tmp_name = $_FILES['featuredImage']['tmp_name'];
@@ -99,10 +99,6 @@
 
                 </select>
 
-                <!-- Tags Input -->
-                <label for="postTags">Tags</label>
-                <input type="text" id="postTags" name="postTags"
-                    placeholder="e.g., JavaScript, Coding, Web Development" />
 
                 <!-- Featured Image Upload -->
                 <label for="featuredImage">Featured Image</label>
@@ -141,7 +137,7 @@
         selector: "#postContent",
         height: 300,
         plugins: "link image code lists",
-        toolbar: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | code",
+        toolbar: "undo redo |blocks fontfamily fontsize | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | code",
         menubar: false,
     });
 

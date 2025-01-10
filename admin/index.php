@@ -5,8 +5,10 @@
     $postData -> execute();
     $allPost = $postData -> get_result();
     
+   if($allPost -> num_rows >0){
     $allDataArray  = $allPost -> fetch_assoc();
     $number_of_post = count($allDataArray);
+   }
 
 ?>
 
@@ -31,7 +33,7 @@
                 <h1>Dashboard</h1>
             </header>
             <section class="dashboard-overview">
-                <div class="stats">Total Posts: <?php echo $number_of_post ?></div>
+                <div class="stats">Total Posts: <?php echo $number_of_post ?? 0 ?></div>
                 <div class="stats">Views: 2.5K</div>
                 <div class="stats">Comments: 300</div>
                 <div class="stats">Followers: 1.2K</div>

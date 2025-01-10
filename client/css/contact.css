@@ -1,10 +1,10 @@
-/* Global Styles */
-body {
-  font-family: Arial, sans-serif;
+* {
   margin: 0;
   padding: 0;
-  line-height: 1.6;
-  color: #333;
+  box-sizing: border-box;
+}
+body {
+  background-color: #999;
 }
 
 h1,
@@ -13,15 +13,20 @@ h3,
 h4,
 h5,
 h6,
+p,
 div,
 span,
-img,
 ul,
 li,
 a,
-p {
-  margin: 0px;
+section,
+article {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-decoration: none;
 }
+
 .contact-heading {
   text-align: center;
   width: 100%;
@@ -132,7 +137,7 @@ textarea {
 }
 
 /* Responsive Styles */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .contact-container {
     flex-direction: column;
   }
@@ -140,5 +145,12 @@ textarea {
   .contact-form,
   .contact-info {
     flex: 1 1 100%;
+  }
+  .contact-container {
+    width: 100%;
+  }
+  .contact-info h2 {
+    margin-bottom: 1rem;
+    font-size: 20px;
   }
 }
