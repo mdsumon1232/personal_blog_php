@@ -40,8 +40,8 @@
 
 
     <section class="main-container">
-
-        <?php 
+        <div>
+            <?php 
             
             
 
@@ -67,20 +67,26 @@
         
         }
         echo "</div>";
-        
-        
-                }
-                else {
-                    echo "
-                        <div class='no-posts'>
-                            <h4>POST NOT FOUND</h4>
-                        </div>
-                    ";
-                }
-            
-            
-            ?>
 
+
+        }
+        else {
+        echo "
+        <div class='no-posts'>
+            <h4>POST NOT FOUND</h4>
+        </div>
+        ";
+        }
+
+
+     
+        
+
+?>
+
+
+
+        </div>
         <div class="right">
 
             <div class="category-list">
@@ -146,15 +152,18 @@
 
         </div>
     </section>
+    <?php echo '<div class="<?php echo  $number_of_data > 5 ? "pagination": "hide"  ?>">';
+    for ($pageNumber = 1; $pageNumber <= $page; $pageNumber++) { if ($pageNumber==$pageNo) {
+        echo "<p class='active'>$pageNumber</p>" ; } else { echo "<a href='?page=$pageNumber'>$pageNumber</a>" ; } }
+        echo '</div>' ; ?>
 
+        <!-- --------------------------------------main content end---------------------------------- -->
 
-    <!-- --------------------------------------main content end---------------------------------- -->
+        <?php require('./client/share/footer.php') ?>
 
-    <?php require('./client/share/footer.php') ?>
+        <!--javascript code-->
 
-    <!--javascript code-->
-
-    <script src="./client/script/script.js"></script>
+        <script src="./client/script/script.js"></script>
 
 
 </body>

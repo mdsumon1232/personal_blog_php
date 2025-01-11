@@ -374,6 +374,36 @@ img {
   }
 }
 
+/* -------------------pagination------------- */
+
+.pagination {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 50px 0;
+}
+
+.pagination a {
+  border: 1px solid black;
+  padding: 5px 10px;
+  margin: 0px 10px;
+  background-color: #000;
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.pagination p.active {
+  padding: 5px 10px;
+  background-color: green;
+  font-size: 20px;
+  font-weight: 700;
+  border: 1px solid green;
+  color: #fff;
+}
+
 @media screen and (min-width: 768px) and (max-width: 1024px) {
   .container {
     width: 90%;
