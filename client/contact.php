@@ -1,3 +1,6 @@
+<?php require("./connection/connection.php")  ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,6 +11,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/contact.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -57,6 +61,8 @@
 
     <!-- --------------- footer---------- -->
     <?php require('./share/footer.php')  ?>
+
+    <script src="./script/script.js"></script>
 </body>
 
 </html>

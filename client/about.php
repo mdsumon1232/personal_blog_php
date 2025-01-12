@@ -1,3 +1,10 @@
+<?php
+ 
+  require("./connection/connection.php");
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

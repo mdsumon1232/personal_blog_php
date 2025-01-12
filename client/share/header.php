@@ -1,6 +1,6 @@
 <?php
       
- 
+
     
     $category_data = $conn->prepare("SELECT * FROM category");
 
@@ -17,6 +17,17 @@
     }
 
 
+    // --------------------search---------------------
+
+  if(isset($_POST['search_submit'])){
+    $search_content = $_POST['search'];
+
+    header("location: http://localhost/personalBlog/client/search.php?keyword=$search_content");
+
+
+  }
+
+
 
 ?>
 
@@ -24,11 +35,12 @@
 
 <header class="header">
     <div class="container">
-        <div class="logo">My Blog</div>
+        <div class="logo"><a href="http://localhost/personalBlog/"> <img
+                    src="http://localhost/personalBlog/admin/images/final-logo.png" alt=""> </a></div>
         <div class="search-bar" id="search-bar">
-            <form action="">
-                <input type="text" placeholder="search">
-                <input type="submit" value="search">
+            <form action="index.php" method="POST">
+                <input type="text" placeholder="search" name="search">
+                <input type="submit" value="search" name="search_submit">
             </form>
         </div>
         <nav class="nav">
